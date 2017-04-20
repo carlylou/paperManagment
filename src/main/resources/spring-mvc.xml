@@ -39,4 +39,5 @@
     </context:component-scan>
 
     <import resource="classpath:spring/spring-config.xml"/>
+
 </beans>

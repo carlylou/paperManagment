@@ -13,7 +13,8 @@
 
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
-    <context:component-scan base-package="com.paper.management.mapper"/>
+    <!--<context:component-scan base-package="com.paper.management.mapper"/>-->
+
     <!--与数据库建立的链接-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
@@ -32,6 +33,7 @@
         <!-- 获取连接最大等待时间 -->
         <property name="maxWait" value="${maxWait}"></property>
     </bean>
+
 
     <bean id="sqlSessionFactory" name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="configLocation" value="classpath:mybatis-config.xml" />
@@ -68,6 +70,11 @@
             </array>
         </property>
     </bean>
+    <!-- scan for mappers and let them be autowired -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.paper.management.mapper" />
+    </bean>
+
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.paper.management.mapper"/>
         <property name="properties">

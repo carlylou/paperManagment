@@ -14,14 +14,10 @@ import java.util.List;
  * Created by liumengyao on 17/4/20.
  */
 @Service
-public class AuthorService implements Serializable{
-
-
-    private static final long serialVersionUID = 180014548961416370L;
+public class AuthorService{
 
     @Autowired
     AuthorMapper authorMapper;
-
 
     @Autowired
     PapersMapper papersMapper;
