@@ -21,7 +21,7 @@ public class Papers implements Serializable{
 
     private String noteSummary;
 
-    private Year publishYear;
+    private Date publishYear;
 
     private Date firstReadTime;
 
@@ -69,11 +69,11 @@ public class Papers implements Serializable{
         this.firstReadTime = firstReadTime;
     }
 
-    public Year getPublishYear() {
+    public Date getPublishYear() {
         return publishYear;
     }
 
-    public void setPublishYear(Year publishYear) {
+    public void setPublishYear(Date publishYear) {
         this.publishYear = publishYear;
     }
 
