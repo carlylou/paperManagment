@@ -11,11 +11,12 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--本文件负责加载JDBC.PROPERTIES,配置数据源,配置sqlSessionFactory, mapper扫描器, 事物管理-->
+
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
-    <!--<context:component-scan base-package="com.paper.management.mapper"/>-->
 
-    <!--与数据库建立的链接-->
+    <!--配置数据源,使用dbcp连接池-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${driver}" />
@@ -36,10 +37,14 @@
 
 
     <bean id="sqlSessionFactory" name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--mybatis全局配置文件-->
         <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <!--数据源-->
         <property name="dataSource" ref="dataSource"/>
+        <!--扫描MAPPER-->
         <property name="mapperLocations">
             <array>
+                <!--扫描包路径-->
                 <value>classpath:com/paper/management/mapper/conf/*.xml</value>
             </array>
         </property>
@@ -84,6 +89,7 @@
         </property>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
+
     <!-- 配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
