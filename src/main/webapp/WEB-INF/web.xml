@@ -35,6 +35,7 @@
     <!--这里是前端控制器,为什么说是前端呢,在SPRING容器中,SPRINGMVC负责前端数据展示,请求处理等等,SERVICE层负责处理事物控制
     ,DAO那些MAPPER,database等负责数据.mapper service controller都属于java beans-->
 
+    <!--spring mvc framework-->
     <servlet>
         <description>paperManagement</description>
         <servlet-name>rest</servlet-name>
@@ -61,5 +62,20 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+
+    <!--web监控-->
+    <!-- log filter for logging -->
+    <filter>
+        <filter-name>logFilter</filter-name>
+        <filter-class>com.paper.management.filter.LogFilter</filter-class>
+        <init-param>
+            <param-name>exclusions</param-name>
+            <param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>logFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </web-app>

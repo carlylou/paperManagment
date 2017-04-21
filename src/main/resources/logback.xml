@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 已经打开自动扫描功能，间隔30秒，所以在系统启动后可以直接修改此文件，无需重启服务器 -->
+<configuration scan="true">
+	<!-- 加载配置文件 -->
+	<!--appender 是输出源,是指输出到哪里,ConsoleAppender就是输出到控制台,FileAppender输出到文件-->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="appLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.output.path}/logs/server.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.output.path}/logs/server.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</layout>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+	</appender>
+
+	<appender name="errorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.output.path}/logs/error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.output.path}/logs/error.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</layout>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+	</appender>
+
+	<!-- logback中日志记录器是继承的，继承的规则是 com.hello.foo 会继承 com.hello 的日志配置，
+	父子关系通过 . 来分割，所以 com 是 com.hello 的父节点。
+	在logback中默认会有一个 root-logger（根 - 日志记录器）的存在，
+	所有的其他日志记录器都会默认继承它的配置。在配置文件中看到的:<root>就是根
+	 一个LOGGER可以配多个输出源 -->
+	<root>
+		${log.stdout}
+		<appender-ref ref="appLog" />
+		<appender-ref ref="errorLog" />
+	</root>
+</configuration>  
+
