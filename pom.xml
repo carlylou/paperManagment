@@ -15,6 +15,8 @@
         <org.springframework-version>4.3.1.RELEASE</org.springframework-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.aspectj-version>1.7.2</org.aspectj-version>
+        <!-- log4j日志文件管理包版本 -->
+        <slf4j.version>1.7.7</slf4j.version>
     </properties>
 
     <dependencies>
@@ -118,10 +120,41 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
+        <!--logging-->
+        <!--we use SLF4J to do logging, LOGBACK是实现SLF4J的,这样就是我们的日志系统-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>paperManagement</finalName>
+        <filters>
+            <filter>src/main/resources/filter/server-${env}.properties</filter>
+        </filters>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -195,4 +228,16 @@
             </resource>
         </resources>
     </build>
+    <!-- 默认激活测试的配置 -->
+    <profiles>
+        <profile>
+            <id>qa</id>
+            <properties>
+                <env>qa</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 </project>
