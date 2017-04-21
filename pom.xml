@@ -152,8 +152,9 @@
 
     <build>
         <finalName>paperManagement</finalName>
+        <!-- 这个位置是为logback.xml提供参数支持server.properties -->
         <filters>
-            <filter>src/main/resources/filter/server-${env}.properties</filter>
+            <filter>src/main/resources/server.properties</filter>
         </filters>
         <pluginManagement>
             <plugins>
@@ -228,16 +229,4 @@
             </resource>
         </resources>
     </build>
-    <!-- 默认激活测试的配置 -->
-    <profiles>
-        <profile>
-            <id>qa</id>
-            <properties>
-                <env>qa</env>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-    </profiles>
 </project>
