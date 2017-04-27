@@ -11,3 +11,6 @@
 
 # maven ignore
 target/
+# sql
+sql/
+
