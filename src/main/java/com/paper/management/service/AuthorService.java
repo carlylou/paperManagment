@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * 针对作者对象进行CRUD操作.
+ *
  * Created by liumengyao on 17/4/20.
  */
 @Service
