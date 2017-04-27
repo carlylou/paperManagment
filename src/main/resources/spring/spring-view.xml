@@ -36,5 +36,17 @@
             <value>text/html; charset=UTF-8</value>
         </property>
         <property name="prefix" value="/" />
+        <property name="order" value="0"/><!-- 高优先级-->
+    </bean>
+
+    <!--JSP视图解析器-->
+    <bean id="viewResolverJsp" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/paper/"/>
+        <property name="suffix" value=".jsp"/><!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑  -->
+        <property name="viewClass">
+            <value>org.springframework.web.servlet.view.InternalResourceView</value>
+        </property>
+        <property name="order" value="1"/><!-- 低优先级-->
+
     </bean>
 </beans>
