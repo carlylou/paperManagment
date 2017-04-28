@@ -18,23 +18,19 @@
         <td>备注</td>
         <td>发表时间</td>
         <td>期刊</td>
-        <td>是否已读</td>
         <td>计划</td>
+        <td>笔记</td>
     </tr>
     <c:forEach items="${list}" var="paper">
         <tr>
+            <td><a href="file:///${paperPath}" target=_blank>${paper.paperName}</a></td>
+            <td>${paper.noteSummary}</td>
+            <td>${paper.publishYear}</td>
             <td>${paper.paperName}</td>
-            <td>${paper.paperName}</td>
-            <td>${paper.paperName}</td>
-            <td>${paper.paperName}</td>
-            <td>${paper.paperName}</td>
-            <td>${paper.paperName}</td>
-
+            <td><a href="${pageContext.request.servletContext}/papers/newPlan?doi=${paper.doi}">指定计划</a></td>
+            <td><a href="file:///${paper.notePath}" target="_blank">阅读笔记</a></td>
         </tr>
     </c:forEach>
 </table>
-
-
-
 </body>
 </html>

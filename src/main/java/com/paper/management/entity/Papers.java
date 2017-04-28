@@ -2,14 +2,15 @@ package com.paper.management.entity;
 
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.time.Year;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by liumengyao on 17/4/20.
  */
 @Table(name = "papers")
-public class Papers implements Serializable{
+public class Papers implements Serializable {
 
     private static final long serialVersionUID = 2812753212750331908L;
 
@@ -28,6 +29,21 @@ public class Papers implements Serializable{
     private Date lastReadTime;
 
     private Date finishReadTime;
+    private String paperPath;
+
+    private List<Author> authors = new LinkedList<Author>();
+
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setPaperPath(String paperPath) {
+        this.paperPath = paperPath;
+    }
+
+    public String getPaperPath() {
+        return paperPath;
+    }
 
     public String getDoi() {
         return doi;
