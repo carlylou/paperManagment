@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -33,10 +34,10 @@ public class PapersController {
     @RequestMapping("/allPaper")
     public String paperList(Model model){
         List<Papers> list = papersService.getAllPaper();
-        /*list = new LinkedList<Papers>();
+        list = new LinkedList<Papers>();
         Papers paper = new Papers();
         paper.setPaperName("SaNsde");
-        list.add(paper);*/
+        list.add(paper);
         model.addAttribute("list",list);
         return "paper";
     }

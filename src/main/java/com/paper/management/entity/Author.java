@@ -24,6 +24,16 @@ public class Author implements Serializable{
 
     private String comment;
 
+    private Papers paper;
+
+    public void setPaper(Papers paper) {
+        this.paper = paper;
+    }
+
+    public Papers getPaper() {
+        return paper;
+    }
+
     public Long getAuthorId() {
         return authorId;
     }
