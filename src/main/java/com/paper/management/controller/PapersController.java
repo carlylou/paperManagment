@@ -19,6 +19,7 @@ public class PapersController {
     @Autowired
     private PapersService papersService;
 
+    //restful风格的URI应该代表资源而不是动作,动作放到HTTP协议中.
     @RequestMapping("/add")
     public String addPaper(@RequestParam("paperPath") String paperPath){
 
@@ -40,6 +41,7 @@ public class PapersController {
         model.addAttribute("list",list);
         return "paper";
     }
+
     @RequestMapping("/plan")
     public String addPaper(){
 

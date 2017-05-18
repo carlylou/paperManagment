@@ -46,6 +46,9 @@
         <property name="viewClass">
             <value>org.springframework.web.servlet.view.InternalResourceView</value>
         </property>
+        <property name="contentType">
+            <value>text/html; charset=UTF-8</value>
+        </property>
         <property name="order" value="1"/><!-- 低优先级-->
 
     </bean>

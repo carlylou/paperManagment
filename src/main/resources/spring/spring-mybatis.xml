@@ -75,11 +75,8 @@
             </array>
         </property>
     </bean>
-    <!-- scan for mappers and let them be autowired -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.paper.management.mapper" />
-    </bean>
 
+    <!-- scan for mappers and let them be autowired -->
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.paper.management.mapper"/>
         <property name="properties">
@@ -88,6 +85,9 @@
             </value>
         </property>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.paper.management.mapper" />
     </bean>
 
     <!-- 配置事务管理器 -->

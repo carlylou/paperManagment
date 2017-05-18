@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.paper.management.mapper.AuthorMapper">
+    <!--编写mapper接口需要遵循一些开发规范，mybatis可以自动生成mapper接口实现类代理对象。
+    规范：
+    1、namespace等于mapper接口地址
+    2、mapper.java接口中的方法名等于mapper.xml中statement的id一致
+    3、mapper.java接口中的方法的输入参数类型和mapper.xml中statement的parameterType指定的类型一致
+    4、mapper.java接口中的方法的返回值类型和mapper.xml中statement的resultType指定的类型一致。
+    -->
 </mapper>

@@ -15,6 +15,7 @@
     or implement an interface or extend a base class or anything. For example, just by annotating a class with
     @Controller (as we did above) , spring will know that the specified class contains methods that will handle HTTP requests,
     no need to define that as a bean in xml.-->
+    <!--mvc:annotation-driven 自动加载RequestMappingHandlerMapping和RequestMappingHandlerAdapter-->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <!--responsebody返回处理-->
